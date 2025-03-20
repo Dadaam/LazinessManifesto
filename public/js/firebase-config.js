@@ -1,12 +1,11 @@
 // Configuration Firebase
-// Remplacez ces valeurs par les vôtres après avoir créé un projet Firebase
 const firebaseConfig = {
-    apiKey: "VOTRE_API_KEY",
-    authDomain: "votre-projet.firebaseapp.com",
-    projectId: "votre-projet",
-    storageBucket: "votre-projet.appspot.com",
-    messagingSenderId: "VOTRE_MESSAGING_SENDER_ID",
-    appId: "VOTRE_APP_ID"
+    apiKey: "AIzaSyCgVVcJp5kTNJxPD3kmdPHraE_gdC1LtSo",
+    authDomain: "lazynessmanifesto.firebaseapp.com",
+    projectId: "lazynessmanifesto",
+    storageBucket: "lazynessmanifesto.firebasestorage.app",
+    messagingSenderId: "263515624145",
+    appId: "1:263515624145:web:103226b010c5efbca96bf0"
 };
 
 // Initialiser Firebase
