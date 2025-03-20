@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Kronergies | Manifeste de la Paresse</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="calculateur-page">
+    <div class="container">
+        <header>
+            <a href="index.html" class="home-link">
+                <svg class="logo-small" viewBox="0 0 100 100" width="60" height="60">
+                    <circle cx="50" cy="50" r="45" fill="#f8f0e3" stroke="#ff7f00" stroke-width="3" />
+                    <circle cx="50" cy="50" r="15" fill="#ff7f00" />
+                </svg>
+            </a>
+            <h1>Calculateur de Kronergies</h1>
+        </header>
+        
+        <main>
+            <div class="intro-text">
+                <p>Sélectionnez vos activités quotidiennes et découvrez votre consommation en kronergies.</p>
+                <p>L'objectif est de <strong>réduire</strong> cette consommation pour optimiser votre énergie vitale.</p>
+            </div>
+            
+            <div class="calculateur-container">
+                <div class="categories">
+                    <button class="category-btn" id="matin-btn">Matin</button>
+                    <button class="category-btn" id="midi-btn">Midi</button>
+                    <button class="category-btn" id="soir-btn">Soir</button>
+                </div>
+                
+                <div class="activites" id="matin-activites">
+                    <h3>Activités du Matin</h3>
+                    <div class="activites-list">
+                        <!-- Les activités seront générées dynamiquement par JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="activites" id="midi-activites">
+                    <h3>Activités du Midi</h3>
+                    <div class="activites-list">
+                        <!-- Les activités seront générées dynamiquement par JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="activites" id="soir-activites">
+                    <h3>Activités du Soir</h3>
+                    <div class="activites-list">
+                        <!-- Les activités seront générées dynamiquement par JavaScript -->
+                    </div>
+                </div>
+                
+                <button id="calculer-btn">Calculer mes kronergies</button>
+            </div>
+            
+            <div class="resultat" id="resultat-container">
+                <div class="resultat-animation">
+                    <div class="rayons">
+                        <div class="rayon"></div>
+                        <div class="rayon"></div>
+                        <div class="rayon"></div>
+                        <div class="rayon"></div>
+                        <div class="rayon"></div>
+                        <div class="rayon"></div>
+                        <div class="rayon"></div>
+                        <div class="rayon"></div>
+                    </div>
+                    <div class="resultat-cercle">
+                        <span id="resultat-total">0</span>
+                        <span class="unite">kronergies</span>
+                    </div>
+                </div>
+                
+                <div class="message-container">
+                    <p id="message-personnalise">Commencez à calculer vos kronergies !</p>
+                </div>
+                
+                <div class="jauge-container">
+                    <p>Votre consommation par rapport à la moyenne :</p>
+                    <div class="jauge">
+                        <div class="jauge-barre" id="jauge-barre"></div>
+                        <div class="jauge-marqueur" id="jauge-marqueur"></div>
+                    </div>
+                    <div class="jauge-labels">
+                        <span>0</span>
+                        <span>Moyenne: <span id="moyenne-value">50</span></span>
+                        <span>100</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Manifeste de la Paresse - Tous droits réservés</p>
+        </footer>
+    </div>
+    
+    <!-- Importation des scripts Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/calculateur.js"></script>
+</body>
+</html>

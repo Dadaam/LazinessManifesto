@@ -1,0 +1,132 @@
+/* Animations pour l'apparition et la disparition des listes d'activités */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Animation des rayons autour du résultat */
+.rayons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.rayon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 2px;
+    background-color: var(--orange);
+    transform-origin: 0 0;
+}
+
+.rayon:nth-child(1) {
+    transform: rotate(0deg);
+    animation: rayonPulse 3s infinite;
+}
+
+.rayon:nth-child(2) {
+    transform: rotate(45deg);
+    animation: rayonPulse 3s infinite 0.375s;
+}
+
+.rayon:nth-child(3) {
+    transform: rotate(90deg);
+    animation: rayonPulse 3s infinite 0.75s;
+}
+
+.rayon:nth-child(4) {
+    transform: rotate(135deg);
+    animation: rayonPulse 3s infinite 1.125s;
+}
+
+.rayon:nth-child(5) {
+    transform: rotate(180deg);
+    animation: rayonPulse 3s infinite 1.5s;
+}
+
+.rayon:nth-child(6) {
+    transform: rotate(225deg);
+    animation: rayonPulse 3s infinite 1.875s;
+}
+
+.rayon:nth-child(7) {
+    transform: rotate(270deg);
+    animation: rayonPulse 3s infinite 2.25s;
+}
+
+.rayon:nth-child(8) {
+    transform: rotate(315deg);
+    animation: rayonPulse 3s infinite 2.625s;
+}
+
+@keyframes rayonPulse {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    50% {
+        width: 100px;
+        opacity: 1;
+    }
+    100% {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+/* Animation pour le cercle de résultat */
+.resultat-cercle {
+    animation: pulsate 2s infinite alternate;
+}
+
+@keyframes pulsate {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 127, 0, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 127, 0, 0.8), 0 0 30px rgba(255, 127, 0, 0.4);
+    }
+}
+
+/* Animation pour le compteur de résultat */
+@keyframes countUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#resultat-total.animate {
+    animation: countUp 1s ease-out;
+}
+
+/* Animation pour l'apparition de la section résultat */
+.resultat.visible {
+    display: block;
+    animation: fadeIn 0.8s ease-in-out;
+}
