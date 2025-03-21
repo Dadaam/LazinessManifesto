@@ -173,7 +173,6 @@ function calculerKronergies() {
 function afficherResultat(total) {
     // Mettre à jour le compteur
     resultatTotal.textContent = total;
-    resultatTotal.classList.add('animate');
     
     // Afficher le conteneur de résultats s'il n'est pas déjà visible
     if (!resultatContainer.classList.contains('visible')) {
@@ -183,13 +182,13 @@ function afficherResultat(total) {
     // Générer un message personnalisé basé sur le total
     let message = "";
     if (total < 30) {
-        message = `Vous avez dépensé ${total} kronergies aujourd'hui ! Félicitations, vous êtes un vrai champion de la paresse !`;
+        message = `Votre score est excellent ! Félicitations, vous êtes un vrai champion de la paresse !`;
     } else if (total < 60) {
-        message = `Vous avez dépensé ${total} kronergies aujourd'hui. Vous êtes dans la moyenne. Encore un peu d'effort pour être plus paresseux !`;
+        message = `Vous êtes dans la moyenne. Encore un peu d'effort pour être plus paresseux !`;
     } else if (total < 90) {
-        message = `Vous avez dépensé ${total} kronergies aujourd'hui. C'est un peu trop ! Essayez de vous reposer davantage.`;
+        message = `C'est un peu trop ! Essayez de vous reposer davantage.`;
     } else {
-        message = `Vous avez dépensé ${total} kronergies aujourd'hui ! C'est beaucoup trop, vous risquez l'épuisement. Adoptez la philosophie de la paresse !`;
+        message = `C'est beaucoup trop, vous risquez l'épuisement. Adoptez la philosophie de la paresse !`;
     }
     
     messagePersonnalise.textContent = message;
@@ -201,11 +200,6 @@ function afficherResultat(total) {
     // Mettre à jour le marqueur de moyenne
     jaugeMarqueur.style.left = `${(moyenneKronergies / 100) * 100}%`;
     moyenneValue.textContent = moyenneKronergies;
-    
-    // Réinitialiser l'animation après un court délai
-    setTimeout(() => {
-        resultatTotal.classList.remove('animate');
-    }, 1000);
 }
 
 // Fonction pour récupérer la moyenne depuis Firebase
