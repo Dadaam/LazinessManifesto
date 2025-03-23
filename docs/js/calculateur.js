@@ -147,9 +147,6 @@ function toggleCategorie(container, button) {
     [matinActivites, midiActivites, soirActivites].forEach(cat => {
         cat.style.display = 'none';
     });
-    [matinBtn, midiBtn, soirBtn].forEach(btn => {
-        btn.classList.remove('active');
-    });
 
     if (isVisible) {
         // Si elle était visible, on la masque
