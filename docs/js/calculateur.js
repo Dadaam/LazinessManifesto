@@ -147,6 +147,9 @@ function toggleCategorie(container, button) {
     [matinActivites, midiActivites, soirActivites].forEach(cat => {
         cat.style.display = 'none';
     });
+    [matinBtn, midiBtn, soirBtn].forEach(btn => {
+        btn.classList.remove('active');
+    });
 
     if (isVisible) {
         // Si elle était visible, on la masque
@@ -163,6 +166,7 @@ function toggleCategorie(container, button) {
         button.classList.add('active');
     }
 }
+
 
 
 // Fonction pour calculer le total de kronergies
