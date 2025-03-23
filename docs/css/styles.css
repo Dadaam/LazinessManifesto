@@ -117,11 +117,11 @@ footer {
 
 .logo-small {
     position: absolute;
-    left: 1rem;
-    top: 0.5rem; /* Ajusté pour qu'il reste en haut */
+    left: 2rem;
+    top: 1.5rem; /* Ajusté pour qu'il reste en haut */
     transform: none; /* Retirer le translateY */
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     z-index: 10;
 }
 
@@ -195,6 +195,9 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 12px 0;
+    gap: 12px;
+    border-bottom: 1px solid var(--gris-clair);
 }
 
 .activite-item:last-child {
@@ -478,6 +481,13 @@ footer {
 
 /* Media queries pour la responsivité */
 @media (max-width: 768px) {
+    .logo-small {
+        top: 0.5rem;
+        left: 0.5rem;
+        width: 40px;
+        height: 40px;
+    }
+    
     header h1 {
         font-size: 1.5rem;
     }
@@ -509,9 +519,13 @@ footer {
     .activite-item {
         flex-direction: row; /* Garder en ligne */
         align-items: center;
+        padding: 16px 0;
+        gap: 16px;
     }
 
     .activite-info {
+        flex-wrap: wrap;
+        align-items: center;
         flex: 1;
     }
 
