@@ -2,11 +2,25 @@
 @keyframes fadeIn {
     from {
         opacity: 0;
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  to {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+}
+
 
 @keyframes slideInUp {
     from {
@@ -38,14 +52,36 @@
     }
     50% {
       opacity: 0.8;
-      transform: translate(80%, -60%) scale(1.05);
+      transform: translate(80%, -60%) scale(1.15);
     }
     100% {
       opacity: 1;
       transform: translate(80%, -60%) scale(1);
     }
   }
-  
+
+  /* Animation bouton check */
+@keyframes circleGrowSmooth {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Animation fluide pour la coche */
+@keyframes checkmarkRotateSmooth {
+  0% {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+    opacity: 1;
+  }
+}
+
 /* Animation pour les listes d'activités */
 .activites {
     animation: fadeIn 0.5s ease-out;
@@ -62,25 +98,3 @@
     animation: slideInUp 0.5s ease-out forwards;
 }
 
-/* Animation bouton check */
-@keyframes circleGrowSmooth {
-    0% {
-      transform: translate(-50%, -50%) scale(0);
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
-  
-  /* Animation fluide pour la coche */
-  @keyframes checkmarkRotateSmooth {
-    0% {
-      transform: translate(-50%, -50%) rotate(-45deg) scale(0);
-      opacity: 0;
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(-45deg) scale(1);
-      opacity: 1;
-    }
-  }
-  

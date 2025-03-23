@@ -170,7 +170,16 @@ footer {
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 8px var(--ombre);
     display: none;
-    animation: fadeIn 0.5s ease-in-out;
+    transition: opacity 0.4s ease, transform 0.4s ease;;
+}
+
+.activites.visible {
+    display: block;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.activites.hidden {
+    animation: fadeOut 0.4s ease-out forwards;
 }
 
 .activites h3 {
