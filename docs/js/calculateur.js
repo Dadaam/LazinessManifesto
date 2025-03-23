@@ -140,45 +140,33 @@ function genererActivites(categorie, container) {
 
 // Fonction pour afficher/masquer une catégorie
 function toggleCategorie(container, button) {
-    // Vérifie si la catégorie est actuellement visible
+    // Vérifier si la catégorie est déjà affichée
     const isVisible = container.style.display === 'block';
-  
-    if (isVisible) {
-      // Si visible, on lance l'animation de fadeOut
-      container.classList.remove('visible');
-      container.classList.add('hidden');
-      button.classList.remove('active');
-  
-      // Une fois l'animation terminée, on masque complètement l'élément
-      container.addEventListener('animationend', () => {
-        if (container.classList.contains('hidden')) {
-          container.style.display = 'none';
-          container.classList.remove('hidden');
-        }
-      }, { once: true });
-    } else {
-      // Avant d'afficher la catégorie, on masque les autres
-      [matinActivites, midiActivites, soirActivites].forEach(cat => {
-        if (cat !== container) {
-          cat.style.display = 'none';
-          cat.classList.remove('visible');
-          cat.classList.add('hidden');
-        }
-      });
-      [matinBtn, midiBtn, soirBtn].forEach(btn => {
+
+    // Masquer toutes les catégories et réinitialiser les boutons
+    [matinActivites, midiActivites, soirActivites].forEach(cat => {
+        cat.style.display = 'none';
+    });
+    [matinBtn, midiBtn, soirBtn].forEach(btn => {
         btn.classList.remove('active');
-      });
-  
-      // Afficher la catégorie avec l'animation fadeIn
-      container.style.display = 'block';
-      setTimeout(() => {
-        container.classList.remove('hidden');
-        container.classList.add('visible');
-      }, 10); // Petit délai pour s'assurer que l'affichage est pris en compte
-      button.classList.add('active');
+    });
+
+    if (isVisible) {
+        // Si elle était visible, on la masque
+        container.style.display = 'none';
+        button.classList.remove('active');
+    } else {
+        if (window.innerWidth <= 768) {
+            button.insertAdjacentElement('afterend', container);
+        } else {
+            const calculerBtn = document.getElementById('calculer-btn');
+            calculerBtn.insertAdjacentElement('beforebegin', container);
+        }
+        container.style.display = 'block';
+        button.classList.add('active');
     }
-  }
-  
+}
+
 
 // Fonction pour calculer le total de kronergies
 function calculerKronergies() {
