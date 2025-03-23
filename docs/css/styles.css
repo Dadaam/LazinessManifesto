@@ -47,7 +47,7 @@ header {
 header h1 {
     font-size: 2rem;
     color: var(--noir);
-    margin: 0;
+    margin-top: 2.5rem;
 }
 
 main {
@@ -118,9 +118,11 @@ footer {
 .logo-small {
     position: absolute;
     left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: var(--transition);
+    top: 0.5rem; /* Ajusté pour qu'il reste en haut */
+    transform: none; /* Retirer le translateY */
+    width: 40px;
+    height: 40px;
+    z-index: 10;
 }
 
 .logo-small:hover {
@@ -193,8 +195,6 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 0;
-    border-bottom: 1px solid var(--gris-clair);
 }
 
 .activite-item:last-child {
@@ -507,12 +507,18 @@ footer {
 
 @media (max-width: 480px) {
     .activite-item {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row; /* Garder en ligne */
+        align-items: center;
     }
-    
-    .activite-compteur {
-        margin-top: 0.5rem;
+
+    .activite-info {
+        flex: 1;
+    }
+
+    .check-btn {
+        margin-left: auto; /* Forcer l'alignement à droite */
+        width: 28px;
+        height: 28px;
     }
 }
 
