@@ -82,46 +82,59 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Récupérer la moyenne depuis Firebase
     getMoyenneFromFirebase();
+    
 });
 
 // Fonction pour générer la liste des activités dans le DOM
 function genererActivites(categorie, container) {
+    // Vider le conteneur
+    container.innerHTML = '';
+    
+    // Ajouter chaque activité
     activites[categorie].forEach((activite, index) => {
         const item = document.createElement('div');
-        item.className = 'activite-item';
+        item.classList.add('activite-item');
         item.dataset.kronergies = activite.kronergies;
         
-        item.innerHTML = `
-            <div class="activite-info">
-                <span class="activite-nom">${activite.nom}</span>
-                <span class="activite-kronergies">${activite.kronergies} kr</span>
-            </div>
-            <div class="activite-compteur">
-                <button class="compteur-btn diminuer" data-categorie="${categorie}" data-index="${index}">-</button>
-                <span class="compteur-value" id="${categorie}-${index}-value">0</span>
-                <button class="compteur-btn augmenter" data-categorie="${categorie}" data-index="${index}">+</button>
-            </div>
-        `;
+        // Créer le bloc d'information
+        const infoContainer = document.createElement('div');
+        infoContainer.classList.add('activite-info');
         
-        container.appendChild(item);
-    });
-    
-    // Ajouter les événements pour les boutons de compteur
-    container.querySelectorAll('.compteur-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const categorieId = this.dataset.categorie;
-            const index = this.dataset.index;
-            const valueElement = document.getElementById(`${categorieId}-${index}-value`);
-            let value = parseInt(valueElement.textContent);
-            
-            if (this.classList.contains('diminuer')) {
-                value = Math.max(0, value - 1);
-            } else {
-                value += 1;
-            }
-            
-            valueElement.textContent = value;
+        // Ajouter le nom de l'activité
+        const nomSpan = document.createElement('span');
+        nomSpan.classList.add('activite-nom');
+        nomSpan.textContent = activite.nom;
+        infoContainer.appendChild(nomSpan);
+        
+        // Ajouter les kronergies
+        const kronergiesSpan = document.createElement('span');
+        kronergiesSpan.classList.add('activite-kronergies');
+        kronergiesSpan.textContent = `${activite.kronergies} kr`;
+        infoContainer.appendChild(kronergiesSpan);
+        
+        item.appendChild(infoContainer);
+        
+        // Créer le bouton de coche
+        const checkBtn = document.createElement('button');
+        checkBtn.classList.add('check-btn');
+        checkBtn.title = "Cliquez pour cocher/décocher l'activité";
+        
+        // Élément caché pour stocker la valeur
+        const hiddenValue = document.createElement('span');
+        hiddenValue.style.display = 'none';
+        hiddenValue.className = 'compteur-value';
+        hiddenValue.id = `${categorie}-${index}-value`;
+        hiddenValue.textContent = "0";
+        item.appendChild(hiddenValue);
+        
+        // Ajouter l'événement de clic
+        checkBtn.addEventListener('click', () => {
+            const isChecked = checkBtn.classList.toggle('checked');
+            hiddenValue.textContent = isChecked ? "1" : "0";
         });
+        
+        item.appendChild(checkBtn);
+        container.appendChild(item);
     });
 }
 
@@ -155,10 +168,12 @@ function calculerKronergies() {
         
         activitesElements.forEach((item, index) => {
             const valueElement = document.getElementById(`${categorie}-${index}-value`);
-            const count = parseInt(valueElement.textContent);
-            const kronergies = parseInt(item.dataset.kronergies);
-            
-            total += count * kronergies;
+            if (valueElement) {
+                const count = parseInt(valueElement.textContent);
+                const kronergies = parseInt(item.dataset.kronergies);
+                
+                total += count * kronergies;
+            }
         });
     });
     

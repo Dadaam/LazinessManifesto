@@ -61,3 +61,26 @@
 .resultat.visible .jauge-container {
     animation: slideInUp 0.5s ease-out forwards;
 }
+
+/* Animation bouton check */
+@keyframes circleGrowSmooth {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  /* Animation fluide pour la coche */
+  @keyframes checkmarkRotateSmooth {
+    0% {
+      transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+      opacity: 1;
+    }
+  }
+  

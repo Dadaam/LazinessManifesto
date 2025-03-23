@@ -216,30 +216,75 @@ footer {
     align-items: center;
 }
 
-.compteur-btn {
+/* Bouton de coche par défaut (non coché) */
+.check-btn {
     width: 30px;
     height: 30px;
+    border: 2px solid var(--orange);
     border-radius: 50%;
-    background-color: var(--gris-clair);
-    border: none;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: transparent;
     cursor: pointer;
-    transition: var(--transition);
-}
-
-.compteur-btn:hover {
+    position: relative;
+    transition: background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    margin-left: 15px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  
+  /* Pseudo-élément pour afficher l’arrière-plan animé */
+  .check-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: transparent;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Pseudo-élément pour la coche */
+  .check-btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 8px;
+    border-left: 2.8px solid transparent;
+    border-bottom: 2.8px solid transparent;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    opacity: 0;
+    transition: border-color 0.2s ease;
+  }
+  
+  /* Effet hover */
+  .check-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Bouton en état coché */
+  .check-btn.checked {
     background-color: var(--orange);
-    color: var(--blanc);
-}
-
-.compteur-value {
-    margin: 0 0.8rem;
-    min-width: 30px;
-    text-align: center;
-}
+    border-color: var(--orange);
+  }
+  
+  /* Animation de l’arrière-plan lorsqu’il est coché */
+  .check-btn.checked::before {
+    background-color: var(--orange);
+    animation: circleGrowSmooth 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  /* Animation de la coche lorsqu’il est coché */
+  .check-btn.checked::after {
+    opacity: 1;
+    border-left-color: white;
+    border-bottom-color: white;
+    animation: checkmarkRotateSmooth 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
 
 #calculer-btn {
     display: block;
@@ -461,3 +506,6 @@ footer {
         margin-top: 0.5rem;
     }
 }
+
+
+  
