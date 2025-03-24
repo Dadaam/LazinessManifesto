@@ -168,6 +168,7 @@ function toggleCategorie(container, button) {
 }
 
 
+
 // Fonction pour calculer le total de kronergies
 function calculerKronergies() {
     let total = 0;
