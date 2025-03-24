@@ -212,7 +212,7 @@ function afficherResultat(total) {
     } else if (total < 40) {
         message = "Excellente performance en immobilité ! Encore un peu d'entrainement et vous pourrez devenir une statue.";
     } else if (total < 60) {
-        message = "Pas mal ! Vous avez sur la bonne voie. Encore un effort... ou plutôt, un non-effort !";
+        message = "Pas mal ! Vous êtes sur la bonne voie. Encore un effort... ou plutôt, un non-effort !";
     } else if (total < 80) {
         message = "Des efforts louables ! Vous avez atteint un niveau de paresse respectable. Continuez à vous détendre !";
     } else if (total < 100) {
