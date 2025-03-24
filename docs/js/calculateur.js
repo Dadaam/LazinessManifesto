@@ -45,7 +45,7 @@ const activites = {
     ]
 };
 
-// Moyenne fictive de kronergies pour la comparaison
+// Moyenne fictive de kronergies (pour la comparaison)
 let moyenneKronergies = 50;
 
 // Variables pour stocker les éléments DOM
@@ -206,24 +206,37 @@ function afficherResultat(total) {
     
     // Générer un message personnalisé basé sur le total
     let message = "";
-    if (total < 30) {
-        message = `Votre score est excellent ! Félicitations, vous êtes un vrai champion de la paresse !`;
+    if (total < 20) {
+        message = "Félicitations ! Vous avez atteint un niveau de paresse olympique. Même une limace vous jalouse.";
+    } else if (total < 40) {
+        message = "Excellente performance en immobilité ! Encore un peu d'entrainement et vous pourrez devenir une statue.";
     } else if (total < 60) {
-        message = `Vous êtes dans la moyenne. Encore un peu d'effort pour être plus paresseux !`;
-    } else if (total < 90) {
-        message = `C'est un peu trop ! Essayez de vous reposer davantage.`;
+        message = "Pas mal ! Vous avez sur la bonne voie. Encore un effort... ou plutôt, un non-effort !";
+    } else if (total < 80) {
+        message = "Des efforts louables ! Vous avez atteint un niveau de paresse respectable. Continuez à vous détendre !";
+    } else if (total < 100) {
+        message = "Attention, vous commencez à bouger un peu trop. Ralentissez avant de devenir productif !";
+    } else if (total < 120) {
+        message = "Ouh là ! Vous flirtez dangereusement avec l'efficacité. Un petit break s'impose immédiatement.";
+    } else if (total < 140) {
+        message = "Votre score est inquiétant… Trop de mouvement détecté ! Prenez un plaid et respirez doucement.";
+    } else if (total < 160) {
+        message = "Stop ! Vous êtes à la limite du raisonnable. Encore un pas et vous risquez d'avoir des ambitions.";
+    } else if (total < 180) {
+        message = "Alerte ! Vous êtes en surchauffe. Posez tout, mettez Netflix et détendez-vous.";
     } else {
-        message = `C'est beaucoup trop, vous risquez l'épuisement. Adoptez la philosophie de la paresse !`;
+        message = "Catastrophe ! Vous avez été trop actif aujourd'hui. Une relaxation divine s'impose immédiatement.";
     }
+
     
     messagePersonnalise.textContent = message;
     
     // Mettre à jour la jauge
-    const pourcentage = Math.min(100, (total / 100) * 100);
+    const pourcentage = Math.min(100, (total / 200) * 100);
     jaugeBarre.style.width = `${pourcentage}%`;
     
     // Mettre à jour le marqueur de moyenne
-    jaugeMarqueur.style.left = `${(moyenneKronergies / 100) * 100}%`;
+    jaugeMarqueur.style.left = `${(moyenneKronergies / 200) * 100}%`;
     moyenneValue.textContent = moyenneKronergies;
 }
 
@@ -247,7 +260,7 @@ function getMoyenneFromFirebase() {
                     if (count > 0) {
                         moyenneKronergies = Math.round(sum / count);
                         moyenneValue.textContent = moyenneKronergies;
-                        jaugeMarqueur.style.left = `${(moyenneKronergies / 100) * 100}%`;
+                        jaugeMarqueur.style.left = `${(moyenneKronergies / 200) * 100}%`;
                     }
                 }
             })
